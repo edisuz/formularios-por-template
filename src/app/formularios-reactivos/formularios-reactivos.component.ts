@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formularios-reactivos',
@@ -8,6 +8,9 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class FormulariosReactivosComponent {
 
-  nombre = new FormControl('Ana', [Validators.required]);
-  email = new FormControl('ana-perez@email.com', [Validators.required, Validators.email]);
+  // Forma de acceder al estado del formulario
+  formUsuario = new FormGroup({
+    'nombre': new FormControl('Ana', [Validators.required]),
+    'email': new FormControl('ana-perez@email.com', [Validators.required, Validators.email])
+  })
 }

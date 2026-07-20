@@ -3,17 +3,20 @@
 <div class="card">
     <div class="card-body">
 
-        <form action="">
+        <form [formGroup]="formUsuario">
 
             <div class="mb-2">
                 <label for="" class="form-label">
                     Nombre:
                 </label>
 
-                <input type="text" name="nombre" [formControl]="nombre" class="form-control"
+                <!-- formControlName es una directiva de atributo de Angular
+                 que se usa para enlazar el campo con un formControl -->
+                <input type="text" name="nombre" formControlName="nombre" class="form-control"
                     placeholder="Ingresar nombre">
 
-                <div class="alert alert-danger mt-3" [hidden]="nombre.valid || nombre.pristine">
+                <div class="alert alert-danger mt-3"
+                    [hidden]="formUsuario.get('nombre')?.valid || formUsuario.get('nombre')?.pristine">
                     El nombre es obligatorio
                 </div>
             </div>
@@ -22,14 +25,15 @@
                     Email:
                 </label>
 
-                <input type="email" name="email" [formControl]="email" class="form-control"
+                <input type="email" name="email" formControlName="email" class="form-control"
                     placeholder="Ingresar email">
 
-                <div class="alert alert-danger mt-3" [hidden]="email.valid || email.pristine">
-                    <span *ngIf="email.errors?.['required']">
+                <div class="alert alert-danger mt-3"
+                    [hidden]="formUsuario.get('email')?.valid || formUsuario.get('email')?.pristine">
+                    <span *ngIf="formUsuario.get('email')?.errors?.['required']">
                         El email es obligatorio
                     </span>
-                    <span *ngIf="email.errors?.['email']">
+                    <span *ngIf="formUsuario.get('email')?.errors?.['email']">
                         El email debe ser válido
                     </span>
                 </div>
@@ -43,6 +47,7 @@
 </div>
 
 <hr>
-{{nombre.value}}
-{{email.value}}
-{{email.errors}}
+
+{{formUsuario.value | json}}<br>
+{{formUsuario.get('nombre')?.value | json}}
+{{formUsuario.get('email')?.value | json}}
