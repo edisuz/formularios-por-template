@@ -13,7 +13,7 @@
                 <input type="text" name="nombre" [formControl]="nombre" class="form-control"
                     placeholder="Ingresar nombre">
 
-                <div class="alert alert-danger mt-3" [hidden]="">
+                <div class="alert alert-danger mt-3" [hidden]="nombre.valid || nombre.pristine">
                     El nombre es obligatorio
                 </div>
             </div>
@@ -25,8 +25,13 @@
                 <input type="email" name="email" [formControl]="email" class="form-control"
                     placeholder="Ingresar email">
 
-                <div class="alert alert-danger mt-3" [hidden]="">
-                    El email es obligatorio
+                <div class="alert alert-danger mt-3" [hidden]="email.valid || email.pristine">
+                    <span *ngIf="email.errors?.['required']">
+                        El email es obligatorio
+                    </span>
+                    <span *ngIf="email.errors?.['email']">
+                        El email debe ser válido
+                    </span>
                 </div>
             </div>
 
@@ -40,3 +45,4 @@
 <hr>
 {{nombre.value}}
 {{email.value}}
+{{email.errors}}
