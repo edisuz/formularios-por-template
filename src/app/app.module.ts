@@ -5,12 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormularioValidacionesComponent } from './formulario-validaciones/formulario-validaciones.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormulariosReactivosComponent } from './formularios-reactivos/formularios-reactivos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    FormularioValidacionesComponent
+    FormularioValidacionesComponent,
+    FormulariosReactivosComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    FormularioValidacionesComponent
+    FormularioValidacionesComponent,
+    FormulariosReactivosComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

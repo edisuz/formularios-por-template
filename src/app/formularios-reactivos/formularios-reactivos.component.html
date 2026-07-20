@@ -1,0 +1,42 @@
+<h2>Formularios Reactivos</h2>
+
+<div class="card">
+    <div class="card-body">
+
+        <form action="">
+
+            <div class="mb-2">
+                <label for="" class="form-label">
+                    Nombre:
+                </label>
+
+                <input type="text" name="nombre" [formControl]="nombre" class="form-control"
+                    placeholder="Ingresar nombre">
+
+                <div class="alert alert-danger mt-3" [hidden]="">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="mb-2">
+                <label for="" class="form-label">
+                    Email:
+                </label>
+
+                <input type="email" name="email" [formControl]="email" class="form-control"
+                    placeholder="Ingresar email">
+
+                <div class="alert alert-danger mt-3" [hidden]="">
+                    El email es obligatorio
+                </div>
+            </div>
+
+            <button class="btn btn-primary mt-2" [disabled]="">
+                Enviar
+            </button>
+        </form>
+    </div>
+</div>
+
+<hr>
+{{nombre.value}}
+{{email.value}}
