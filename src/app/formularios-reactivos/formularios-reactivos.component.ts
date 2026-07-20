@@ -8,6 +8,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormulariosReactivosComponent {
 
+
+  get nombre() {
+    return this.formUsuario.get('nombre') as FormControl
+  }
+  get email() {
+    return this.formUsuario.get('email') as FormControl
+  }
   // Forma de acceder al estado del formulario
   formUsuario = new FormGroup({
     'nombre': new FormControl('Ana', [Validators.required]),

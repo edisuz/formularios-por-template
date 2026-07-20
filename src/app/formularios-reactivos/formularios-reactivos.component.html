@@ -15,8 +15,7 @@
                 <input type="text" name="nombre" formControlName="nombre" class="form-control"
                     placeholder="Ingresar nombre">
 
-                <div class="alert alert-danger mt-3"
-                    [hidden]="formUsuario.get('nombre')?.valid || formUsuario.get('nombre')?.pristine">
+                <div class="alert alert-danger mt-3" [hidden]="nombre.valid || nombre.pristine">
                     El nombre es obligatorio
                 </div>
             </div>
@@ -28,18 +27,17 @@
                 <input type="email" name="email" formControlName="email" class="form-control"
                     placeholder="Ingresar email">
 
-                <div class="alert alert-danger mt-3"
-                    [hidden]="formUsuario.get('email')?.valid || formUsuario.get('email')?.pristine">
-                    <span *ngIf="formUsuario.get('email')?.errors?.['required']">
+                <div class="alert alert-danger mt-3" [hidden]="email.valid || email.pristine">
+                    <span *ngIf="email.errors?.['required']">
                         El email es obligatorio
                     </span>
-                    <span *ngIf="formUsuario.get('email')?.errors?.['email']">
+                    <span *ngIf="email.errors?.['email']">
                         El email debe ser válido
                     </span>
                 </div>
             </div>
 
-            <button class="btn btn-primary mt-2" [disabled]="">
+            <button class="btn btn-primary mt-2" [disabled]="formUsuario.invalid">
                 Enviar
             </button>
         </form>
